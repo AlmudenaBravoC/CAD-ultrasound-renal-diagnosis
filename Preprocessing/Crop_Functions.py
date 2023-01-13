@@ -1,10 +1,5 @@
 from PIL import Image
 import numpy as np
-from skimage.color import rgb2gray
-from multiprocessing import Pool
-import multiprocessing as mp
-import time
-from collections import Counter
 import scipy.io
 from skimage import io, util
 
