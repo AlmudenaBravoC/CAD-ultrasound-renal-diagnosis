@@ -4,7 +4,8 @@ import scipy.io
 
 def crop_images(file, s_lesions: dict, poly = poly):
   """
-  Crop the images to 375x375 without considering where is the kidney
+  Crop the images to 375x375 without considering where is the kidney.
+  It read the image file and the matlab files where the masks where saved
   
   features:
   - file: list of name files
@@ -53,6 +54,7 @@ def crop_images(file, s_lesions: dict, poly = poly):
 def mask_crop_images(file, s_lesions=s_lesions, poly = poly):
   """
   Crop the images to 375x375 using the mask to consider where is the kidney
+  It read the image file and the matlab files where the masks where saved
   
   features:
   - file: list of name files
