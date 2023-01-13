@@ -20,3 +20,14 @@ To run an example:
 python Classification/classification_model.py --n_epochs=30 --m=0.95 --root_img='cropped_images'
 ```
 Some other values can be changed, for more check -help
+
+
+## SEGMENTATION
+
+This model is based on the Deeplabv3-ResNet50 pretained model of PyTorch.
+To run an example:
+
+```ruby
+python Segmentation/segmentation_model.py --n_epochs=30 --root_fold='normal_crop' --fold_img='good_img' --fold_masks='mask_parenquima' --batch=8
+```
+Some other values can be changed, for more check -help
