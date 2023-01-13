@@ -14,8 +14,9 @@ All the process has been included.
 ## CLASIFICATION
 
 This model is based on the ResNet-50 pretained model of PyTorch.
-To run it you just need to write in the terminal:
+To run an example:
 
 ```ruby
-python classification_model.py 
+python Classification/classification_model.py --n_epochs=30 --m=0.95 --root_img='cropped_images'
 ```
+Some other values can be changed, for more check -help
