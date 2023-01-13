@@ -13,3 +13,9 @@ All the process has been included.
 
 ## CLASIFICATION
 
+This model is based on the ResNet-50 pretained model of PyTorch.
+To run it you just need to write in the terminal:
+
+```ruby
+python classification_model.py 
+```
