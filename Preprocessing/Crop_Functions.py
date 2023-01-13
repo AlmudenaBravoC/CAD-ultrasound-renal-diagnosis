@@ -1,7 +1,6 @@
 from PIL import Image
 import numpy as np
 import scipy.io
-from skimage import io, util
 
 def crop_images(file, s_lesions: dict, poly = poly):
   """
