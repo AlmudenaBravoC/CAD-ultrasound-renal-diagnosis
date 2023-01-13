@@ -6,5 +6,10 @@ In this project we propose the development of a renal ultrasound computer aided 
 
 $\textbf{Keywords:}$ Artificial intelligence, deep learning, classification, segmentation, parenchyma, kidney
 
+## PREPROCESSING
+
+In our case we needed to convert all the information so it was easiser to read and use. Also, we needed to do some crops to the images and analysis to get the distance information to have the pixel-cm relation.
+All the process has been included.
+
 ## CLASIFICATION
 
