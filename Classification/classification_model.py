@@ -367,7 +367,7 @@ model_resnet50.fc = torch.nn.Sequential(torch.nn.Dropout(args.dropout),
 
 start_time = time.time()
 name = 'ResNet101_transformations'
-vl , acc_tr, acc_v, auc = initial_model(model_resnet50, name = name,
+vl , acc_tr, acc_v, auc = trainloop(model_resnet50, name = name,
                   root_img = args.root_img,
                   weights_loss = [w1, w2] , trans_tensor = t_tensor, proportion_train = args.pt, batch_size = args.batch, 
                   n_epochs=args.n_epochs, print_every=50, train_m = True, 
