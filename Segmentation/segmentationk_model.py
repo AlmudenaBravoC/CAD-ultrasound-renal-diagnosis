@@ -359,7 +359,7 @@ if not exp_directory.exists(): #create the directory if it does not exits
     exp_directory.mkdir()
 
 #6. train the model
-model_best = train_model(model = model, criterion = criterion, dataloaders= dataloader_parenquima, optimizer = optimizer, num_epochs = args.n_epochs, metrics=metrics, bpath=exp_directory, lr=args.lr, b=args.batch)
+model_best = trainloop_seg(model = model, criterion = criterion, dataloaders= dataloader_parenquima, optimizer = optimizer, num_epochs = args.n_epochs, metrics=metrics, bpath=exp_directory, lr=args.lr, b=args.batch)
 
   # Save the trained model
 print('model saved')
