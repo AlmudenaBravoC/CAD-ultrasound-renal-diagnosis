@@ -237,4 +237,4 @@ def getArea_Thickness_Parenchyma(mask: np.array, px_cm:float):
   pixels_paren = np.sum(ones_img==255)
   thick = round(pixels_paren/px_cm, 2)
 
-  return [area, thick]
+  return [area*2, thick]
