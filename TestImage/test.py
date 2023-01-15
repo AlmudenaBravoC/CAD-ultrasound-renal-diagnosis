@@ -1,4 +1,5 @@
 
+
 # A TEST WITH A HEALTHY IMAGE
 
 
@@ -16,9 +17,9 @@ import allProcess
 
 
 #%% read image
-file = 'name.jpg'
+file = 'I20181002082003468.jpg'
 root_model = 'ResNet50.3_lr0.001_th0.6_m0.95_batch16.pt'
-root_model_paren = 'weights_parenquima2.pt'
+root_model_paren = 'segmentation_image/weights_parenquima2.pt'
 
 # %% Caluclate distances
 
@@ -49,8 +50,10 @@ model.classifier = DeepLabHead(2048, 1)
 model.load_state_dict(torch.load(root_model_paren))
 model.eval()
 
-mask = allProcess.predictionDEEPLABV(model, crop_img, threshold=0.6, save=True)
+mask = allProcess.predictionDEEPLABV(model, crop_img, threshold=0.6, save=False)
 
-## get number of pixels (=1)
-pixels_paren = np.sum(mask==1)
-print(pixels_paren/px_cm) #parenchyma area --> 882.59 cm2
+area,thick = allProcess.getArea_Thickness_Parenchyma(mask, px_cm)
+print('Parenchyma area:', area) #617.83cm2
+print('Parenchyma thickness', thick) #2.6cm
+
+# %%
