@@ -11,6 +11,10 @@ import torch
 from torchvision import transforms
 import matplotlib.pyplot as plt
 
+import matplotlib
+import cv2
+import os
+
 ### 1 GET DISTANCE
 def crop_x(image, x1=100,x2=250, y1=38,y2=48):
   """
@@ -184,3 +188,53 @@ def predictionDEEPLABV(model, image_test, threshold = 0.6, save=False):
       plt.savefig('test.jpg')
          
     return new_mask
+
+
+### 5 AREA AND THICKNESS
+
+def getArea_Thickness_Parenchyma(mask: np.array, px_cm:float):
+  file = 'test.png'
+  mask = mask.reshape((375,375))
+  matplotlib.image.imsave(file , mask) #better not in black and white so we can check better the ellipse when plotting
+  image = cv2.imread(file, 0)
+  os.remove(file)
+
+  ret,thresh = cv2.threshold(image,150,255,0)
+  contours, _ = cv2.findContours(thresh, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
+
+  c_max = 0
+  for c in range(len(contours)):
+    if len(contours[c]) > c_max: 
+      c_max = len(contours[c])
+      cnt = contours[c]
+
+  ellipse_old = cv2.fitEllipse(cnt) 
+
+  ### AREA ________________________________________________________
+  #change values of axis lengh
+  ellipse = list(ellipse_old) 
+  ellipse[1] = [0, 500] #makes the mayor axis bigger
+
+  ellipse_img = cv2.ellipse(image,ellipse, (0,0,255), 1)
+
+  for j in range(ellipse_img.shape[1]):
+    idx_min = np.argmin(ellipse_img[:, j])
+    
+    #once we have the idx, we can transform all into zeros (below)
+    mask[idx_min:, j] = 0
+  
+  pixels_paren = np.sum(mask==1)
+  area = round(pixels_paren/px_cm, 2)
+
+  ### THICKNESS_____________________________________________________
+  ellipse = list(ellipse_old) 
+  ellipse[1] = [500, 0] #makes the minor axis bigger
+
+  black_img = np.zeros((375, 375), dtype = np.uint8)
+  ellipse_img = cv2.ellipse(black_img,ellipse, (255,255,255), 1) #to draw only the ellipse
+
+  ones_img = mask*ellipse_img
+  pixels_paren = np.sum(ones_img==255)
+  thick = round(pixels_paren/px_cm, 2)
+
+  return [area, thick]
