@@ -252,14 +252,14 @@ def getArea_Thickness_Kidney(mask: np.array, px_cm:float):
     contours, _ = cv2.findContours(thresh, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
     ellipse_contour = max(contours, key=cv2.contourArea)
     ellipse = cv2.fitEllipse(ellipse_contour)
-    (x, y), (major_axis, minor_axis), angle = ellipse
+    (x, y), (minor_axis, major_axis), angle = ellipse
     
     
     ## AREA
     area = round(np.sum(mask==1)/px_cm, 2)
     
     ## AXIS LENGTH
-    mayor = round(major_axis/px_cm)
-    minor = round(minor_axis/px_cm)
+    mayor = round(major_axis/px_cm, 2)
+    minor = round(minor_axis/px_cm, 2)
     
     return [area, mayor, minor]
