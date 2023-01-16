@@ -1,5 +1,7 @@
 # CAD Ultrasound Renal Diagnosis
 
+Project in collaboration with the hospital Ramon y Cajal of Madrid
+
 ## Abstract of the work 
 
 n this project we propose the development of a renal ultrasound computer aided tool using deep learning techniques. We introduce three main tools as part of this system: a classifier that uses convolutional neural networks (CNNs) to distinguish between healthy and pathological kidneys, a segmentation tool substantiated on semantic segmentation based CNNs (deeplabv3) to segmentate the kidney and its parenchyma, and lastly a tool for estimating the area of the parenchyma and the kidney size using blob detection with a pixel-to-centimeter conversion. We demonstrate the effectiveness of these tools using ResNets for the classification task and performing visual evaluation of the segmentation and area estimation tools. Additionally we develop an application programming interface (API) for local usage and testing. Our results suggest that the proposed system has the potential to improve the efficiency of renal ultrasound diagnosis.
