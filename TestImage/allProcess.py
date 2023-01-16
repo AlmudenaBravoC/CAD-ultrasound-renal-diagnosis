@@ -238,3 +238,28 @@ def getArea_Thickness_Parenchyma(mask: np.array, px_cm:float):
   thick = round(pixels_paren/px_cm, 2)
 
   return [area*2, thick]
+
+### 6 AREA AND THICKNESS KIDNEY
+
+def getArea_Thickness_Kidney(mask: np.array, px_cm:float):
+    file = 'test.png'
+    mask = mask.reshape((375,375))
+    matplotlib.image.imsave(file , mask) #better not in black and white so we can check better the ellipse when plotting
+    img = cv2.imread(file, 0)
+    os.remove(file)
+    
+    ret, thresh = cv2.threshold(img, 150, 255, 0)
+    contours, _ = cv2.findContours(thresh, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
+    ellipse_contour = max(contours, key=cv2.contourArea)
+    ellipse = cv2.fitEllipse(ellipse_contour)
+    (x, y), (major_axis, minor_axis), angle = ellipse
+    
+    
+    ## AREA
+    area = round(np.sum(mask==1)/px_cm, 2)
+    
+    ## AXIS LENGTH
+    mayor = round(major_axis/px_cm)
+    minor = round(minor_axis/px_cm)
+    
+    return [area, mayor, minor]
