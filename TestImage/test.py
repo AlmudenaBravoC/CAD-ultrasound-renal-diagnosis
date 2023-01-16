@@ -20,6 +20,7 @@ import allProcess
 file = 'I20181002082003468.jpg'
 root_model = 'ResNet50.3_lr0.001_th0.6_m0.95_batch16.pt'
 root_model_paren = 'segmentation_image/weights_parenquima2.pt'
+root_model_kidney = 'weights_kidney.pt'
 
 # %% Caluclate distances
 
@@ -56,4 +57,14 @@ area,thick = allProcess.getArea_Thickness_Parenchyma(mask, px_cm)
 print('Parenchyma area:', area) #617.83cm2
 print('Parenchyma thickness', thick) #2.6cm
 
-# %%
+# %% SEGMENTATION KIDNEY
+
+model.load_state_dict(torch.load(root_model_kidney, map_location=torch.device('cpu')))
+model.eval()
+
+mask = allProcess.predictionDEEPLABV(model, crop_img, threshold=0.6, save=False)
+area,mayor, minor = allProcess.getArea_Thickness_Kidney(mask, px_cm)
+
+print('Kidney area:', area) #998.08cm2
+print('Mayor axis:', mayor) #8.64cm
+print('Minor axis:', minor) #5.36cm
