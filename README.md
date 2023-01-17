@@ -33,3 +33,10 @@ To run an example:
 python Segmentation/segmentation_model.py --n_epochs=30 --root_fold='normal_crop' --fold_img='good_img' --fold_masks='mask_parenquima' --batch=8
 ```
 Some other values can be changed, for more check -help
+
+## TestImage
+
+This is a folder that contains a file with all the functions necessary and a example that uses the different functions with our models and a test image. I
+
+
+Images are not available
