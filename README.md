@@ -15,7 +15,7 @@ Before starting, you will need to download and install the environment in conda.
 In our case we needed to convert all the information so it was easiser to read and use. Also, we needed to do some crops to the images and analysis to get the distance information to have the pixel-cm relation.
 All the process has been included.
 
-## CLASIFICATION
+## CLASSIFICATION
 
 This model is based on the ResNet-50 pretained model of PyTorch.
 To run an example:
