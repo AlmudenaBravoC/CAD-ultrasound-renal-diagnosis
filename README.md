@@ -10,6 +10,8 @@ $\textbf{Keywords:}$ Artificial intelligence, deep learning, classification, seg
 
 ## PREPROCESSING
 
+Before starting, you will need to download and install the environment in conda.
+
 In our case we needed to convert all the information so it was easiser to read and use. Also, we needed to do some crops to the images and analysis to get the distance information to have the pixel-cm relation.
 All the process has been included.
 
@@ -36,7 +38,9 @@ Some other values can be changed, for more check -help
 
 ## TestImage
 
-This is a folder that contains a file with all the functions necessary and a example that uses the different functions with our models and a test image. I
+This is a folder that contains a file with all the functions necessary and a example that uses the different functions with our models and a test image. 
+
+All is included, the preprocessing necessary for the image, the calculation of the number of pixels that represent one centimeter and the prediction using the different models. Moreover, the functions to calculate the areas, the axis and the parenchyma thickness are also included.
 
 
 Images are not available
