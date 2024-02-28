@@ -43,4 +43,4 @@ This is a folder that contains a file with all the functions necessary and a exa
 All is included, the preprocessing necessary for the image, the calculation of the number of pixels that represent one centimeter and the prediction using the different models. Moreover, the functions to calculate the areas, the axis and the parenchyma thickness are also included.
 
 
-Images are not available
+Images are not available s
